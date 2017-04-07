@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>测试url参数页面</title>
+</head>
+<body>
+测试url参数页面,在url后面加上?error或者?ok或者?warn或者?msg=123查看不同的效果;
+<span th:text="${param}"></span><br/>
+<span th:if="${param.error}" th:text="@{错误}" style="color:red"></span>
+<span th:if="${param.ok}" th:text="@{正确}" style="color:green"></span>
+<span th:if="${param.warn}" th:text="@{警告}" style="color:yellow"></span>
+<span th:if="${param.msg}" th:text="${param.msg}" style="color:blue"></span><br/>
+<span th:if="${param.msg}" th:text="${param.msg[0]}" style="color:blue"></span>
+<hr/>
+<span th:text="${today}"></span><br/>
+<hr/>
+session:<span th:if="${session}" th:text="${session}"></span><br/>
+application:<span th:if="${application}" th:text="${application}"></span>
+<hr/>
+</body>
+</html>
