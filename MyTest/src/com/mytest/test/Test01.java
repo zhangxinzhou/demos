@@ -1,16 +1,19 @@
 package com.mytest.test;
 
+import java.util.Properties;
+
+/**
+ * 打印出系统参数System.Properties
+ * @author ZXZ
+ *
+ */
 public class Test01 {
 
+	
 	public static void main(String[] args) {
-		Student stu=new Student();
-		stu.setId(100L);
-		stu.setName("测试");
-		stu.setSex("男");
-		Student stu2=new Student();
-		stu2.setId(-stu.getId());
-		stu2.setName(stu.getName());
-		stu2.setSex(stu.getSex());
-		System.out.println(stu2);
+		Properties props= System.getProperties();
+		props.forEach((k,v)->{
+			System.out.println(k+"="+v);
+		});
 	}
 }

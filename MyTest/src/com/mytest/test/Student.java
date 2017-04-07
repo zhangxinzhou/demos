@@ -1,10 +1,20 @@
 package com.mytest.test;
 
+/**
+ * 学生实体类
+ * @author ZXZ
+ *
+ */
 public class Student {
 
+	/*学生id*/
 	private Long id;
+	/*学生姓名*/
 	private String name;
+	/*学生性别*/
 	private String sex;
+	
+	/*getter and setter*/
 	public Long getId() {
 		return id;
 	}
