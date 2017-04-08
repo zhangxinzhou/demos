@@ -37,9 +37,14 @@ public class StudentControllerTest {
 	@Autowired
 	StudentService stuService;
 	
+	@Autowired
+	StudentController stuController;
+	
 	@Before
 	public void setUp(){
-		mvc=MockMvcBuilders.standaloneSetup(new StudentController()).build();
+		mvc=MockMvcBuilders.standaloneSetup(stuController).build();
+		/*采用下面方式会失败,因为new的controller没有注入所需要的StudentService*/
+		//mvc=MockMvcBuilders.standaloneSetup(new StudentController()).build();
 		counter=1;
 		Student stu=new Student();
 		stu.setId(1L);
@@ -70,6 +75,8 @@ public class StudentControllerTest {
 				  .param("msg", "更新测试");
 		showinfo(request);
 		request=delete("/stu/1");
+		showinfo(request);
+		request=get("/stu/msg/test");
 		showinfo(request);
 	}
 	

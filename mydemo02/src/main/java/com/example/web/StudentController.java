@@ -61,7 +61,12 @@ public class StudentController {
     	Map<String, List<Student>> map=new HashMap<>();
     	map.put("before", stuService.findAllStu());
     	stuService.delStu(id);
-    	map.put("after", stuService.findAllStu());
+    	map.put("after", stuService.findAllStu());//find与
     	return map;
+    }
+    
+    @RequestMapping(value="/msg/{msg}",method=RequestMethod.GET)
+    public String test(@PathVariable String msg){
+    	return "msg : "+msg;
     }
 }
