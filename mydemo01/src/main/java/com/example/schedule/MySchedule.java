@@ -29,7 +29,7 @@ public class MySchedule {
 	 * @param    无参数
 	 * @return   无返回值   
 	 */
-	@Scheduled(fixedRate = 600000)
+	@Scheduled(fixedRate = 60000)
 	public void reportCurrentTime(){
 		log.info("每隔一分钟报时->当前时间 : [{}]",LocalDateTime.now());
 	}
