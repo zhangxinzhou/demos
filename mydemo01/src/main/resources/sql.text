@@ -1,0 +1,12 @@
+-- 没有引入jpa的帮助需要自己手动来执行这一段
+-- 如果你还没有准备好测试用的数据库,将这一段复制下来运行,并在命令行中运行
+CREATE DATABASE IF NOT EXISTS test;-- 创建数据库
+use test;                          -- 选择(进入)刚才创建的数据库
+CREATE TABLE IF NOT EXISTS test    -- 在数据库中创建表
+(
+id int PRIMARY KEY auto_increment,
+field VARCHAR(50)
+);
+
+insert into test(id,field) values(NULL,'test');     -- 插入测试数据
+insert into test(id,field) values(NULL,'lalala');   -- 插入测试数据
