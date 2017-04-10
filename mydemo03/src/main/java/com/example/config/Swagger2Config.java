@@ -34,6 +34,7 @@ public class Swagger2Config {
 				    .title("Spring Boot中使用Swagger2构建RESTful APIs")
 				    .description("参考资料:http://blog.didispace.com/springbootswagger2/")
 				    .termsOfServiceUrl("http://blog.didispace.com/springbootswagger2/")
+				    //.contact(new Contact("ZXZ", "https://github.com/aabbcc5050/demos/tree/master/mydemo03", "aabbcc5050@qq.com"))
 				    .contact("ZXZ")
 				    .version("1.0")
 				    .build();
