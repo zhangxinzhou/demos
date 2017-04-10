@@ -61,7 +61,8 @@ public class StudentController {
     	Map<String, List<Student>> map=new HashMap<>();
     	map.put("before", stuService.findAllStu());
     	stuService.delStu(id);
-    	map.put("after", stuService.findAllStu());//find与
+    	map.put("after", stuService.findAllStu());
+    	
     	return map;
     }
     

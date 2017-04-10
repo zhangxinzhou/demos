@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public void delStu(Long id) {
-		stuRepository.delete(id);;
+		stuRepository.delete(id);
 	}
 
 	@Override

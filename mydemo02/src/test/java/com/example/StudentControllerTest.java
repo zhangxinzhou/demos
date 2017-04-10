@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -87,15 +88,18 @@ public class StudentControllerTest {
 	private void showinfo(RequestBuilder request){
 		log.info("[{}]begin*****************************************************",counter);
 		try {
-			log.info("URL : [{}]",mvc.perform(request).andReturn().getRequest().getRequestURL());
-			log.info("METHOD : [{}]",mvc.perform(request).andReturn().getRequest().getMethod());
+			/*接收mvc.perform(request)结果  如果用mvc.perform(request).andReturn().getRequest()会重复访问被测试的url */
+			MvcResult mvcResult= mvc.perform(request).andReturn();
+			log.info("URL : [{}]",mvcResult.getRequest().getRequestURL());
+			log.info("METHOD : [{}]",mvcResult.getRequest().getMethod());
 			/*如果有参数,就把参数打印出来*/
-			mvc.perform(request).andReturn().getRequest().getParameterMap().forEach((k,v)->{
+			mvcResult.getRequest().getParameterMap().forEach((k,v)->{
 				log.info("PARAM : [{}]=[{}]",k,Arrays.asList(v));
 			});		
-			log.info("RETURN : [{}]",mvc.perform(request).andReturn().getResponse().getContentAsString());
+			log.info("RETURN : [{}]",mvcResult.getResponse().getContentAsString());
 		} catch (Exception e) {
 			log.info("EXCEPTION! : [{}]",e.getMessage());
+			e.printStackTrace();
 		}
 		log.info("_____________________________________________________________");
 		counter++;
