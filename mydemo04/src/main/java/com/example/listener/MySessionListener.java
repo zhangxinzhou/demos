@@ -1,12 +1,18 @@
 package com.example.listener;
 
 import javax.servlet.ServletContext;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@WebListener
 public class MySessionListener implements HttpSessionListener{
 
+	private Logger log=LoggerFactory.getLogger(getClass());
 	public static final String ONLINE_COUNT="count";
 	
 	@Override
@@ -18,7 +24,7 @@ public class MySessionListener implements HttpSessionListener{
 			count=0;
 		}
 		application.setAttribute(ONLINE_COUNT, count+1);
-		System.out.println("sessionCreated");
+		log.info("sessionCreated");
 	}
 
 	@Override
@@ -30,7 +36,7 @@ public class MySessionListener implements HttpSessionListener{
 			count=0;
 		}
 		application.setAttribute(ONLINE_COUNT, count-1);
-		System.out.println("sessionDestroyed");
+		log.info("sessionDestroyed");
 	}
 
 }
