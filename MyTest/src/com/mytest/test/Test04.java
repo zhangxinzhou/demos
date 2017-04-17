@@ -21,12 +21,14 @@ public class Test04 {
 	public void test(){		
 		Long ms=System.currentTimeMillis();	
 		Date date=new Date(ms);
-		System.out.println("时间(原格式) : "+date);	
-		System.out.println("时间                     : "+SDF_DATE_TIME.format(date));		
-		System.out.println("时间(流水号) : "+SDF_SWIFT_NUMBER.format(date));
-		System.out.println("流水号压缩         : "+Base62.encode(Long.valueOf(SDF_SWIFT_NUMBER.format(date))));
-		System.out.println("毫秒                     : "+ms);
-		System.out.println("毫秒压缩             : "+Base62.encode(ms));
+		System.out.println("时间原格式\t: "+date);	
+		System.out.println("时间\t: "+SDF_DATE_TIME.format(date));		
+		System.out.println("时间流水号\t: "+SDF_SWIFT_NUMBER.format(date));
+		System.out.println("流水号压缩\t: "+Base62.encode(Long.valueOf(SDF_SWIFT_NUMBER.format(date))));
+		System.out.println("毫秒\t: "+ms);
+		System.out.println("毫秒压缩\t: "+Base62.encode(ms));
 	}
+	
+
 
 }
