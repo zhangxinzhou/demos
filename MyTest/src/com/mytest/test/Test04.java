@@ -27,6 +27,7 @@ public class Test04 {
 		System.out.println("流水号压缩\t: "+Base62.encode(Long.valueOf(SDF_SWIFT_NUMBER.format(date))));
 		System.out.println("毫秒\t: "+ms);
 		System.out.println("毫秒压缩\t: "+Base62.encode(ms));
+		
 	}
 	
 
