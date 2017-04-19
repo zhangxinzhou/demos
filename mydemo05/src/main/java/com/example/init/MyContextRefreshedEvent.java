@@ -19,13 +19,8 @@ public class MyContextRefreshedEvent implements ApplicationListener<ContextRefre
 		log.info("[{}] : [{}]",ContextRefreshedEvent.class.getSimpleName(),ContextRefreshedEvent.class.getSimpleName());
 		//root application context 没有parent，他就是老大.
 		if(event.getApplicationContext().getParent()==null){
-			System.out.println("lalala");
+			System.out.println("防止运行多次!");
 		}
-		//或者下面这种方式.
-		if(event.getApplicationContext().getDisplayName().equals("Root WebApplicationContext")){
-			System.out.println("fafafa");
-		}
-		System.out.println(event.getApplicationContext().getDisplayName());
 	}
 
 }

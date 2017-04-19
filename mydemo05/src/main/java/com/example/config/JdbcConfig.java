@@ -30,4 +30,5 @@ public class JdbcConfig {
 		dataSource.setPassword(password);
 		return dataSource;
 	}
+	
 }
