@@ -14,6 +14,19 @@ public class Student {
 	/*学生性别*/
 	private String sex;
 	
+	
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Student(Long id, String name, String sex) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+	}
+
 	/*getter and setter*/
 	public Long getId() {
 		return id;
