@@ -3,8 +3,6 @@ package com.endecode;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -63,17 +61,6 @@ public class MD5Try {
 		String result= new BigInteger(1, md).toString(16);
         System.out.println(result);
         System.out.println(Base64.getEncoder().encodeToString(result.getBytes()));
-	}
-
-
-	@Test
-	public void test(){
-		Map<String, Object> map=new HashMap<>();
-		int i=100;
-		while(i-->0){
-			map.put(i+"123", i+"123");
-			System.out.println(map.hashCode());
-		}
 	}
 
 }

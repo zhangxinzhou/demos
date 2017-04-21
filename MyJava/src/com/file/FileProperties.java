@@ -15,7 +15,7 @@ public class FileProperties {
 	private static SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 	
 	public static void main(String[] args) {
-		String path="C:\\Users\\user\\Desktop\\pdf";
+		String path="C:/user/test.pdf";
 		test(path);
 	}
 	
@@ -25,7 +25,7 @@ public class FileProperties {
 		List<File> result=new ArrayList<>();
 		String[] names=file.list();
 		for (int i = 0; i < names.length; i++) {
-			result.add(new File(path+"\\"+names[i]));
+			result.add(new File(path+"/"+names[i]));
 		}
 		return result;
 	}

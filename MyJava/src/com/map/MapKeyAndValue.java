@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
+//highcharts 封装成指定的数据格式
 public class MapKeyAndValue {
 
 	public static void main(String[] args) {
