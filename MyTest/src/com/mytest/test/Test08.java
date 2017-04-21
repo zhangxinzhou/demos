@@ -12,6 +12,10 @@ public class Test08 {
 		String path="C:/Users/Administrator/Desktop";
 		String name="sql.txt";
 		File file=new File(path, name);
+		if(!file.exists()){
+			System.out.println("文件不存在");
+			return ;
+		}
 		if(file.exists()){
 			BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(file), "gbk"));
 			String line;
