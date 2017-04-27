@@ -16,6 +16,6 @@ public class SMSReceiver {
 	@RabbitHandler
 	public void process(String msg){
 		System.out.println("接收到:"+msg);
-		ServiceUtil.sendEmail();
+		ServiceUtil.sendSMS();
 	}
 }
