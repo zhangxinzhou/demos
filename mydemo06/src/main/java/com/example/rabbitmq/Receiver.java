@@ -34,9 +34,17 @@ public class Receiver {
 		ServiceUtil.sendEmail();
 	}
 	
+	
+	//rabbitmq会将任务平均分配给每个消费者
 	@RabbitHandler
 	@RabbitListener(queues="test")
-	public void doSendTest(Integer count){
-		System.out.println("接收到信息 : "+count);
+	public void doSendTest1(Integer count){	
+		System.out.println("消费者1号接收到信息 : "+count);
+	}
+	
+	@RabbitHandler
+	@RabbitListener(queues="test")
+	public void doSendTest2(Integer count){	
+		System.out.println("消费者2号接收到信息 : "+count);
 	}
 }

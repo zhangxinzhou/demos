@@ -25,7 +25,7 @@ public class Mydemo06ApplicationTests {
 
 	@Test
 	public void test(){
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			sender.sendTest();
 		}
 	}
