@@ -4,10 +4,9 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.dao.RegisterDao;
-import com.example.rabbitmq.sender.EmailSender;
-import com.example.rabbitmq.sender.SMSSender;
+import com.example.rabbitmq.Sender;
+
 
 /**
  * 业务流程:
@@ -24,18 +23,17 @@ public class MQService {
 	@Autowired
 	RegisterDao registerDao;
 	@Autowired
-	SMSSender smsSender;
-	@Autowired
-	EmailSender emailSender;
+	Sender sender;
+
 	
 	//使用消息队列的方式执行
 	public boolean doMQService(){
 		//存储是核心业务,并且存储数据也有失败的可能,所以这一步不放在队列中
 		boolean result=registerDao.storageData(); 
 		System.out.println("使用消息队列的方式:"+LocalDateTime.now());
-		smsSender.sendSMS();
+		sender.sendSMS();
 		System.out.println("使用消息队列的方式:"+LocalDateTime.now());
-		emailSender.sendEmail();
+		sender.sendEmail();
 		return result;
 	}
 }
