@@ -1,4 +1,4 @@
-package com.example.rabbitmq;
+package com.example.rabbitmq.sender;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +14,8 @@ public class Sender {
 	AmqpTemplate rabbitTemplate;
 	
 	public void send(){
-		String context="hello"+LocalDateTime.now();
-		System.out.println(context);
-		rabbitTemplate.convertAndSend(context);
+		String context="现在时间 : "+LocalDateTime.now();
+		System.out.println("Sender : "+context);
+		rabbitTemplate.convertAndSend("hello",context);
 	}
 }

@@ -11,4 +11,14 @@ public class RabbitConfig {
 	public Queue helloQueue(){
 		return new Queue("hello");
 	}
+	
+	@Bean
+	public Queue SMSQueue(){
+		return new Queue("sms");
+	}
+	
+	@Bean
+	public Queue EmailQueue(){
+		return new Queue("email");
+	}
 }
