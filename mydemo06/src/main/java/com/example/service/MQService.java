@@ -36,4 +36,13 @@ public class MQService {
 		sender.sendEmail();
 		return result;
 	}
+	
+	//测试发送1万次消息
+	public void test(){
+		System.out.println(">>>>>>>>>>>>>>>>>>>开始推送到消息队列test");
+		for (int i = 0; i < 10000; i++) {
+			sender.sendTest();
+		}
+		System.out.println(">>>>>>>>>>>>>>>>>>>推送到消息队列test结束");
+	}
 }

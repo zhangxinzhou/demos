@@ -18,9 +18,15 @@ public class Mydemo06ApplicationTests {
     Sender sender;
 	
 	
-	@Test
+	//@Test
 	public void contextLoads() {
 		sender.send();
 	}
 
+	@Test
+	public void test(){
+		for (int i = 0; i < 10000; i++) {
+			sender.sendTest();
+		}
+	}
 }

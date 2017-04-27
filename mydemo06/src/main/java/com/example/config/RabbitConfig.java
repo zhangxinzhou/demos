@@ -21,4 +21,11 @@ public class RabbitConfig {
 	public Queue EmailQueue(){
 		return new Queue("email");
 	}
+	
+	@Bean
+	public Queue testQueue(){
+		Queue queue=new Queue("test");
+		
+		return queue;
+	}
 }

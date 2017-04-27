@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
+	private int count=0;
+	
 	@Autowired
 	AmqpTemplate rabbitTemplate;
 	
@@ -25,5 +27,10 @@ public class Sender {
 	
 	public void sendEmail(){
 		rabbitTemplate.convertAndSend("email","发送email");
+	}
+	
+	public void sendTest(){
+		count++;
+		rabbitTemplate.convertAndSend("test",count);	
 	}
 }

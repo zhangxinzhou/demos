@@ -19,12 +19,14 @@ public class WebController {
 	MQService mqService;
 	
 
+	//主页
 	@RequestMapping
 	@ResponseBody
 	public String index(){
 		return "index";
 	}
 	
+	//模拟普通串行执行业务
 	@RequestMapping("/normal")
 	@ResponseBody
 	public String normal(){
@@ -35,6 +37,7 @@ public class WebController {
 		return result+"!耗时:"+spendmsg;
 	}
 	
+	//模拟用队列的方式执行业务
 	@RequestMapping("/mq")
 	@ResponseBody
 	public String mq(){
@@ -43,5 +46,13 @@ public class WebController {
 		boolean result=mqService.doMQService();
 		String spendmsg=(System.currentTimeMillis()-start)+"ms";
 		return result+"!耗时:"+spendmsg;
+	}
+	
+	//测试发送一万条消息到队列
+	@RequestMapping("/test")
+	@ResponseBody
+	public String test(){
+		mqService.test();
+		return "test";
 	}
 }
