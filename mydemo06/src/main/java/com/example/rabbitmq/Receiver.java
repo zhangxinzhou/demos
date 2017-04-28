@@ -35,7 +35,7 @@ public class Receiver {
 	}
 	
 	
-	//rabbitmq会将任务平均分配给每个消费者
+	//rabbit MQ会将任务平均分配给每个消费者
 	@RabbitHandler
 	@RabbitListener(queues="test")
 	public void doSendTest1(Integer count){	
