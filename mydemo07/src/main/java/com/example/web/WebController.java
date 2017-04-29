@@ -2,7 +2,7 @@ package com.example.web;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
 import com.example.model.User;
+
+ 
+
 
 @Controller
 public class WebController {
@@ -51,4 +56,20 @@ public class WebController {
 		list.forEach(System.out::println);
 		return list;
 	}
+
+	@RequestMapping("/get3")
+	@ResponseBody
+	public Map<String, Object> test03(@RequestBody Map<String,Object> params) throws Exception{
+		params.forEach((k,v)->{
+			System.out.println("key : "+k+" value : "+v);
+		});
+		System.out.println(">>>>>>>>>>>>>>>>>>");
+		String jsonStr=JSON.toJSONString(params.get("users"));
+		System.out.println(jsonStr);
+		List<User> users=JSON.parseArray(jsonStr, User.class);
+		users.forEach(System.out::println);
+		System.out.println(">>>>>>>>>>>>>>>>>>");
+		return params;
+	}
+	
 }

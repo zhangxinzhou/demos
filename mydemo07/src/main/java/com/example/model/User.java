@@ -36,6 +36,11 @@ public class User {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", msg=" + msg + "]";
+	}
 	
 	
 }

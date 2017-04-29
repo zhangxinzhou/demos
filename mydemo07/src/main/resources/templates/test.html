@@ -10,6 +10,7 @@
 
 <button  onclick="test1();">test1</button>
 <button  onclick="test2();">test2</button>
+<button  onclick="test3();">test3</button>
 
 <script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
 <script th:inline="javascript">
@@ -27,11 +28,10 @@ function getUsers(){
 	users.push(u1);
 	users.push(u2);
 	users.push(u3);
-	return JSON.stringify(users);
+	return users;
 }
 function test1(){
-	 var users=getUsers();
-     var datas={"str":"str","msg":"msg","users":users}; 
+     var datas={"str":"str","msg":"msg","users":getUsers()}; 
      var data=JSON.stringify(datas);
 	 $.ajax({
 			url:"/get1", 
@@ -51,9 +51,27 @@ function test2(){
 	 var str1="one";
 	 var str2="two";
 	 var str3="three";
+	 var datas=JSON.stringify(getUsers());
 	 $.ajax({
 			url:"/get2/"+str1+"/"+str2+"/"+str3, 
-			data:getUsers(),
+			data:datas,
+			type:'POST', 
+			async : false, //默认为true 异步   
+			dataType:"json",
+			contentType:"application/json",
+			error: function(jqXHR, textStatus, errorThrown) {
+			},
+			success:function(data){
+				console.log(data);
+			}
+	 });		
+}
+function test3(){
+    var datas={"str":"str","msg":"msg","users":getUsers()}; 
+    var data=JSON.stringify(datas);
+	 $.ajax({
+			url:"/get3", 
+			data:data,
 			type:'POST', 
 			async : false, //默认为true 异步   
 			dataType:"json",
