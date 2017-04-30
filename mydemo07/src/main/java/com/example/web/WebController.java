@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -32,9 +35,12 @@ public class WebController {
 	}
 	
 	@RequestMapping("/test")
-	public String test(HttpSession session){
+	public String test(HttpSession session,HttpServletResponse response){
 		//为第四个测试做准备
 		session.setAttribute("user_id", "fskl_dflkjsdfsl_1sf");
+		Cookie cookie=new Cookie("user_id_cookie", "fangrucookie");
+		cookie.setMaxAge(10000);
+		response.addCookie(cookie);
 		return "test";
 	}
 	
@@ -84,9 +90,10 @@ public class WebController {
 	public Map<String, Object> test04(@RequestHeader("Accept-Encoding") String encoding, 
                                       @RequestHeader("User-Agent") String User_Agent,
                                       @CookieValue(value="JSESSIONID",required=false) String cookie,
-                                      @CookieValue(value="user_id",required=false) String user_id,
+                                      @CookieValue(value="user_id_cookie",required=false) String user_id,
                                       @PathVariable String pathparam,
-                                      @RequestBody String users){
+                                      @RequestBody String users,
+                                      HttpServletRequest request){
 		Map<String, Object> map=new HashMap<>();
 		map.put("Accept-Encoding(@RequestHeader)", encoding);
 		map.put("User-Agent(@RequestHeader)", User_Agent);
@@ -94,6 +101,8 @@ public class WebController {
 		map.put("user_id(@CookieValue)", user_id);
 		map.put("pathparam(@PathVariable)", pathparam);
 		map.put("users(@RequestBody)", users);
+		String sessionid=request.getSession().getAttribute("user_id").toString();
+		map.put("sessionid", sessionid);
 		map.forEach((k,v)->{
 			System.out.println("key : "+k+" value : "+v);
 		});
