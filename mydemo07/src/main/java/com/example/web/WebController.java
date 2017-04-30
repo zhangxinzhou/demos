@@ -1,12 +1,17 @@
 package com.example.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,7 +32,9 @@ public class WebController {
 	}
 	
 	@RequestMapping("/test")
-	public String test(){
+	public String test(HttpSession session){
+		//为第四个测试做准备
+		session.setAttribute("user_id", "fskl_dflkjsdfsl_1sf");
 		return "test";
 	}
 	
@@ -70,6 +77,27 @@ public class WebController {
 		users.forEach(System.out::println);
 		System.out.println(">>>>>>>>>>>>>>>>>>");
 		return params;
+	}
+	
+	@RequestMapping("/get4/{pathparam}")
+	@ResponseBody
+	public Map<String, Object> test04(@RequestHeader("Accept-Encoding") String encoding, 
+                                      @RequestHeader("User-Agent") String User_Agent,
+                                      @CookieValue(value="JSESSIONID",required=false) String cookie,
+                                      @CookieValue(value="user_id",required=false) String user_id,
+                                      @PathVariable String pathparam,
+                                      @RequestBody String users){
+		Map<String, Object> map=new HashMap<>();
+		map.put("Accept-Encoding(@RequestHeader)", encoding);
+		map.put("User-Agent(@RequestHeader)", User_Agent);
+		map.put("JSESSIONID(@CookieValue)", cookie);
+		map.put("user_id(@CookieValue)", user_id);
+		map.put("pathparam(@PathVariable)", pathparam);
+		map.put("users(@RequestBody)", users);
+		map.forEach((k,v)->{
+			System.out.println("key : "+k+" value : "+v);
+		});
+		return map;
 	}
 	
 }
