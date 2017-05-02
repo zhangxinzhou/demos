@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<!-- jquery -->
+<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
+<!-- jquery Plugin -->
+<script  th:src="@{/tableExport/tableExport.js}"></script>
+<script  th:src="@{/tableExport/jquery.base64.js}"></script>
+<!-- PNG Export  -->
+<script  th:src="@{/resources/static/tableExport/html2canvas.js}"></script>
+<!--  PDF Export  -->
+<script  th:src="@{/resources/static/tableExport/jspdf/libs/sprintf.js}"></script>
+<script  th:src="@{/resources/static/tableExport/jspdf/jspdf.js}"></script>
+<script  th:src="@{/resources/static/tableExport/jspdf/libs/base64.js}"></script>
+<!-- 
+Usage
+onClick ="$('#tableID').tableExport({type:'pdf',escape:'false'});"
+Options
+separator: ','
+ignoreColumn: [2,3],
+tableName:'yourTableName'
+type:'csv'
+pdfFontSize:14
+pdfLeftMargin:20
+escape:'true'
+htmlContent:'false'
+consoleLog:'false' 
+  -->
+</body>
+</html>
