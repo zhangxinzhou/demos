@@ -10,6 +10,17 @@
 <img alt="cat" th:src="@{/static/images/cat.jpg}" />
 <img alt="cat" src="/mytest/cat.jpg" />
 -->
+<a th:href="@{/}">首页</a>
+<a href="#" onclick="javascript:history.go(0)" >刷新</a>
+<a href="#" onclick="javascript:history.go(1)" >前进</a>
+<a href="#" onclick="javascript:history.go(-1)" >返回</a><br/>
+<select id="tables" onchange="selecttable(this.value);">
+   <option value="1">1</option>
+   <option value="2">2</option>
+</select>
+<a href="javascript:void(0);" onclick="table_export();" >导出</a>
+<table id="table" border="1"></table>
+
 
 
 <!-- jquery -->
@@ -40,7 +51,68 @@ consoleLog:'false'
 -->
 <script th:inline="javascript">
 /*<![CDATA[*/
-
+$(function(){
+	var selObj=$("#tables");
+	var optObj=$("#tables option");
+	$.ajax({
+		url:'/gettablenames',
+		type:'get',
+		success:function(data){
+			selectinit(selObj,optObj,data);
+		}
+	});
+});
+//初始化select
+function selectinit(selectObj,optionObj,data){
+	optionObj.remove();//先清空
+	for(var key in data){
+		addOption(selectObj,data[key],data[key]);
+	}
+}
+//select添加选项
+function addOption(selectObj,value,text){
+	selectObj.append("<option value='"+value+"'>"+text+"</option>");
+}
+function selecttable(tablename){
+	var table=$("#table");
+	$.ajax({
+		url:'/gettable',
+		type:'post',
+		data:{tablename:tablename},
+		success:function(data){
+			createtable(table,data);
+		}
+	});
+}
+function createtable(table,data){
+	//1清空原表,2动态创建表头,3动态创建内容 
+	table.empty();
+	var flag=true;
+	for(var key in data){
+		var obj=data[key];
+		if(flag){//表头只创建一次
+			flag=false;
+	    	var tr=$("<tr></tr>");
+	    	tr.appendTo(table);
+		    for(var k in obj){
+		    	var td=$("<td>"+k+"</td>");
+		        td.appendTo(tr);
+		    }
+		}//添加内容
+		var tr=$("<tr></tr>");
+		tr.appendTo(table);
+		for(var k in obj){
+	    	var td=$("<td>"+obj[k]+"</td>");
+	        td.appendTo(tr);
+	    }
+	}
+}
+function table_export(){
+	$('#table').tableExport({
+		                   type:'excel',
+		                   escape:'true'
+		              });
+}
 /*]]>*/
 </script>
 </body>
