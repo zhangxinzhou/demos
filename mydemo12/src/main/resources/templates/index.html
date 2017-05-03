@@ -5,20 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!--  
+测试自定义静态资源路径
+<img alt="cat" th:src="@{/static/images/cat.jpg}" />
+<img alt="cat" src="/mytest/cat.jpg" />
+-->
 
 
 <!-- jquery -->
-<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/jquery/jquery-3.2.1.min.js}"></script>
 <!-- jquery Plugin -->
-<script  th:src="@{/tableExport/tableExport.js}"></script>
-<script  th:src="@{/tableExport/jquery.base64.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/tableExport.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jquery.base64.js}"></script>
 <!-- PNG Export  -->
-<script  th:src="@{/resources/static/tableExport/html2canvas.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/html2canvas.js}"></script>
 <!--  PDF Export  -->
-<script  th:src="@{/resources/static/tableExport/jspdf/libs/sprintf.js}"></script>
-<script  th:src="@{/resources/static/tableExport/jspdf/jspdf.js}"></script>
-<script  th:src="@{/resources/static/tableExport/jspdf/libs/base64.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/libs/sprintf.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/jspdf.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/libs/base64.js}"></script>
 <!-- 
+用法:
 Usage
 onClick ="$('#tableID').tableExport({type:'pdf',escape:'false'});"
 Options
@@ -31,6 +37,11 @@ pdfLeftMargin:20
 escape:'true'
 htmlContent:'false'
 consoleLog:'false' 
-  -->
+-->
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+/*]]>*/
+</script>
 </body>
 </html>

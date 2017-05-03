@@ -17,7 +17,7 @@ public class WebController {
 	@Autowired
 	TestService testService;
 	
-	@RequestMapping
+	@RequestMapping({"/","index"})
 	public String index(){
 		return "index";
 	}

@@ -9,9 +9,10 @@
 <a href="#" onclick="javascript:history.go(0)" >刷新</a>
 <a href="#" onclick="javascript:history.go(1)" >前进</a>
 <a href="#" onclick="javascript:history.go(-1)" >返回</a>
+<a href="javascript:void(0);" onclick="table_export();" >导出</a>
 <!-- tables.html是写死的,table.html是动态创建的,所以tables.html应该响应的速度更快 
      th:if="${iterStat.index==0}" 目的是为了只拿一行,然后遍历这行值的key,value,获取表头-->
-	<table border="1">
+	<table id="mytable" border="1">
 		<thead th:each="d,iterStat : ${data}" th:if="${iterStat.index==0}">
 			<tr>
 				<td th:each="map : ${d}" th:text="${map.key}"></td>
@@ -30,20 +31,50 @@
 	</table>
 
 <!-- jquery -->
-<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
-<!-- 演示:thymeleaf如何在js中取数据 -->
-<script th:inline="javascript" type="text/javascript" >
-var data=[[${data}]];
-if(data.length>0){
-	var oneLine=data[0];
-	var columns=new Array();
-	for(var key in oneLine){
-		//取值用 value=oneLine[key];
-		columns.push(key);
+<script type="text/javascript" th:src="@{/static/jquery/jquery-3.2.1.min.js}"></script>
+<!-- jquery Plugin -->
+<script type="text/javascript" th:src="@{/static/tableExport/tableExport.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jquery.base64.js}"></script>
+<!-- PNG Export  -->
+<script type="text/javascript" th:src="@{/static/tableExport/html2canvas.js}"></script>
+<!--  PDF Export  -->
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/libs/sprintf.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/jspdf.js}"></script>
+<script type="text/javascript" th:src="@{/static/tableExport/jspdf/libs/base64.js}"></script>
+<!-- 
+用法:
+Usage
+onClick ="$('#tableID').tableExport({type:'pdf',escape:'false'});"
+Options
+separator: ','
+ignoreColumn: [2,3],
+tableName:'yourTableName'
+type:'csv'
+pdfFontSize:14
+pdfLeftMargin:20
+escape:'true'
+htmlContent:'false'
+consoleLog:'false' 
+-->
+<script type="text/javascript" th:inline="javascript" >
+/*<![CDATA[*/
+$(function(){//演示:thymeleaf如何在js中取数据
+	var data=[[${data}]];
+	if(data.length>0){
+		var oneLine=data[0];
+		var columns=new Array();
+		for(var key in oneLine){
+			//取值用 value=oneLine[key];
+			columns.push(key);
+		}
 	}
+	console.log(data);
+	console.log(columns);
+});
+function table_export(){
+	$('#mytable').tableExport({type:'excel',escape:'true'});
 }
-console.log(data);
-console.log(columns);
+/*]]>*/
 </script>
 </body>
 </html>
