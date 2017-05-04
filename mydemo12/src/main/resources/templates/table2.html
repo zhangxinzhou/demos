@@ -13,24 +13,52 @@
 <!-- tables.html是写死的,table.html是动态创建的,所以tables.html应该响应的速度更快 
      th:if="${iterStat.index==0}" 目的是为了只拿一行,然后遍历这行值的key,value,获取表头-->
 	<table id="mytable" border="1">
-		<thead th:each="d,iterStat : ${data}" th:if="${iterStat.index==0}">
+		<thead>
 			<tr>
-				<td th:each="map : ${d}" th:text="${map.key}"></td>
+				<td>序号</td>
+				<td>id</td>
+				<td>姓名</td>
+				<td>性别</td>
 			</tr>
 		</thead>
-		<tfoot  th:each="d,iterStat : ${data}" th:if="${iterStat.index==0}">
+		<tfoot>
 			<tr>
-				<td th:each="map : ${d}" th:text="@{*}"></td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
+				<td>*</td>
 			</tr>
 		</tfoot>
-		<!-- <tbody th:each="d,iterStat : ${data}" th:if="${iterStat.index==0}">
+		<tbody>
 			<tr>
-				<td th:each="map : ${d}" th:text="${map.key}"></td>
+				<td>1</td>
+				<td>1</td>
+				<td>李四</td>
+				<td>男</td>
 			</tr>
-		</tbody> -->
-		<tbody  th:each="d,iterStat : ${data}">
 			<tr>
-				<td th:each="map : ${d}" th:text="${map.value}"></td>
+				<td>2</td>
+				<td>2</td>
+				<td>李5</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>3</td>
+				<td>李6</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>4</td>
+				<td>李7</td>
+				<td>女</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>5</td>
+				<td>djflksjdflkjlskdjfl德里克福建省立刻就对方立刻圣诞节放假</td>
+				<td>防守打法</td>
 			</tr>
 		</tbody>
 	</table>
@@ -63,19 +91,6 @@ consoleLog:'false'
 -->
 <script type="text/javascript" th:inline="javascript" >
 /*<![CDATA[*/
-$(function(){//演示:thymeleaf如何在js中取数据
-	var data=[[${data}]];
-	if(data.length>0){
-		var oneLine=data[0];
-		var columns=new Array();
-		for(var key in oneLine){
-			//取值用 value=oneLine[key];
-			columns.push(key);
-		}
-	}
-	console.log(data);
-	console.log(columns);
-});
 function table_export(){
 	$('#mytable').tableExport({
 		                   type:'excel',

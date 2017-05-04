@@ -22,6 +22,11 @@ public class WebController {
 		return "index";
 	}
 	
+	@RequestMapping("table2")
+	public String table2(){
+		return "table2";
+	}
+	
 	@RequestMapping("tables")
 	public String tables(ModelMap mm){
 		mm.put("data",testService.getAllTablesDetail());
