@@ -14,7 +14,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 @EnableScheduling
 public class SchedulerConfig {
 	
-	@Autowired
+/*	@Autowired
 	ApplicationContext applicationContext;
 	
 	@Autowired
@@ -26,5 +26,5 @@ public class SchedulerConfig {
 		sfb.setApplicationContext(applicationContext);
 		sfb.setDataSource(dataSource);
 		return sfb;
-	}
+	}*/
 }
