@@ -28,15 +28,17 @@ public class QuartzTest {
 	private final static String TRIGGER_GROUP_NAME = "mytriggergroup";
 	
 	private final static String cronStr1="0/1 * * * * ?";
+	private final static String cronStr2="0/2 * * * * ?";
+	
+	private final static TriggerKey triggerKey = TriggerKey.triggerKey(JOB_GROUP_NAME,TRIGGER_GROUP_NAME);
 	
 	public static void main(String[] args) throws Exception {
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		scheduler.start();
-		scheduler.start();
-		scheduler.shutdown();
 		//simpleScheduTest();
 		
-		addScheduJob(scheduler,MyScheduJob2.class, JOB_NAME, TRIGGER_NAME, JOB_GROUP_NAME, TRIGGER_GROUP_NAME,cronStr1);
+		addScheduJob(scheduler,MyScheduJob2.class, JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME,cronStr1);
+		addScheduJob(scheduler,MyScheduJob2.class, JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME,cronStr2);
 	}
 	
 	/**
@@ -140,6 +142,14 @@ public class QuartzTest {
 	public static void triggerScheduJob(Scheduler scheduler,String jobName,String triggerGroup) throws SchedulerException{
 		JobKey jobKey = JobKey.jobKey(jobName, triggerGroup);
 		scheduler.triggerJob(jobKey);
+	}
+	
+	public static Trigger getDefaultTrigger(Scheduler scheduler) throws SchedulerException{
+		Trigger trigger=scheduler.getTrigger(triggerKey);
+		if(trigger==null){
+			trigger=TriggerBuilder.newTrigger().withIdentity(triggerKey).build();
+		}
+		return trigger;
 	}
 
 }

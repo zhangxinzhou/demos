@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="jqueryversion();">Jquery版本</button>
+
+<table border="1">
+    <thead>
+        <td>id</td>
+        <td>任务名称</td>
+        <td>任务组别</td>
+        <td>任务状态</td>
+        <td>任务描述</td>
+        <td>cron表达式</td>
+        <td>执行的方法</td>
+        <td>操作</td>
+    </thead>
+    <tfoot>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+        <td>*</td>
+    </tfoot>
+    <tbody th:each="d,iterStat : ${data}">
+        <tr>
+				<td th:text="${d.jobId}">jobId</td>
+				<td th:text="${d.jobName}">任务名称</td>
+				<td th:text="${d.jobGroup}">任务组别</td>
+				<td th:text="${d.jobStatus}">任务状态</td>
+				<td th:text="${d.jobDesc}">任务描述</td>
+				<td th:text="${d.cronExpression}">cron表达式</td>
+				<td th:text="${d.jobClass}">执行的方法</td>
+				<td th:text="@{暂停}">操作</td>
+		</tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/jquery-ui-1.12.1/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+function jqueryversion(){
+	var version=$.fn.jquery;
+	alert(version);
+}
+</script>
+</body>
+</html>

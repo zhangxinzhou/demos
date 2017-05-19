@@ -1,0 +1,3 @@
+INSERT INTO `schedule_job` VALUES (1, '0/10 * * * * ?', 0, 'com.example.schedujob.MyScheduJob1', '随系统启动', 'system', 'job1', '1', NULL, NULL);
+INSERT INTO `schedule_job` VALUES (2, '0/10 * * * * ?', 0, 'com.example.schedujob.MyScheduJob2', '随系统启动', 'system', 'job2', '1', NULL, NULL);
+INSERT INTO `schedule_job` VALUES (3, '0/10 * * * * ?', 0, 'com.example.schedujob.MyScheduJob3', '随系统启动', 'system', 'job3', '0', NULL, NULL);
