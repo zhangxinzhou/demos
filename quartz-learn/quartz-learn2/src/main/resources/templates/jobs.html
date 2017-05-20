@@ -37,7 +37,10 @@
 				<td th:text="${d.jobDesc}">任务描述</td>
 				<td th:text="${d.cronExpression}">cron表达式</td>
 				<td th:text="${d.jobClass}">执行的方法</td>
-				<td th:text="@{暂停}">操作</td>
+				<td>
+				   <a href="javascript:void(0);" th:onclick="'javascript:changestatus(\''+${d.jobId}+'\')'" th:text="${d.jobStatus} == 1 ? @{暂停} : @{开启} "></a>
+				   <a href="javascript:void(0);" th:onclick="'javascript:isvalidcron(\''+${d.jobId}+'\',\''+${d.cronExpression}+'\')'" th:text="@{更新cron}"></a>
+                </td>
 		</tr>
     </tbody>
 </table>
@@ -48,6 +51,50 @@
 function jqueryversion(){
 	var version=$.fn.jquery;
 	alert(version);
+}
+function changestatus(jobId){
+    $.ajax({
+		url:"/changestatus",
+		type:"post",
+		data:{jobId:jobId},
+		success:function(data){
+			if(data){
+				window.location.reload();
+			}else{
+				alert("操作失败");
+			}
+		}
+	});
+}
+function isvalidcron(jobId,cronExpression){
+	var cronExpression= prompt("请输入新的cron表达式:",cronExpression)
+	$.ajax({
+		url:"/isvalidcron",
+		type:"post",
+		data:{cronExpression:cronExpression},
+		success:function(data){
+			if(data){
+				updatecron(jobId,cronExpression);
+			}else{
+				alert("无效的cron表达式");
+			}
+		}
+	});
+}
+function updatecron(jobId,cronExpression){
+	$.ajax({
+		url:"/updatecron",
+		type:"post",
+		data:{jobId:jobId,cronExpression:cronExpression},
+	    success:function(data){
+	    	if(data){
+	    		window.location.reload();
+	    	}else{
+	    		alert("更新表达式发生错误");
+	    	}
+	    }
+	});
+	console.log(jobId);
 }
 </script>
 </body>

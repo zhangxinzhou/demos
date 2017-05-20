@@ -5,12 +5,17 @@ import java.time.LocalDateTime;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MyScheduJob3 implements Job{
+	
+	private final Logger log=LoggerFactory.getLogger(getClass());
 
 	@Override
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		System.out.println("类 : "+this.getClass().getSimpleName()+",报时 : "+LocalDateTime.now());
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		log.info("任务 : [{}],触发器 : [{}],执行类 : [{}],时间 : [{}]",
+				context.getJobDetail().getKey(),context.getTrigger().getKey(),this.getClass().getName(),LocalDateTime.now());
 	}
 
 }
