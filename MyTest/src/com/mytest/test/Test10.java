@@ -10,6 +10,7 @@ public class Test10 {
 	public static void main(String[] args) {
 		int num=10;
 		test(num);
+		test1(num);
 	}
 	
 	/**
@@ -38,5 +39,28 @@ public class Test10 {
 			System.out.println(list);
 		}	
 		System.out.println("报数报到 : "+count.get());
+	}
+	
+	
+	public static void test1(int num){	
+		//数据准备
+		List<Integer> list=new ArrayList<>(num);
+		List<Integer> remove=new ArrayList<>();
+		for (int i = 0; i < num; i++) {
+			list.add(i);
+		}
+		int count=0;
+		//开始遍历
+		System.out.println(list);
+		while(list.size()>1){			
+			for (Integer integer : list) {
+				count++;
+				if(count%3==0){remove.add(integer);}
+			}		
+			list.removeAll(remove);
+			remove.clear();
+			System.out.println(list);
+		}	
+		System.out.println("报数报到 : "+count);
 	}
 }
