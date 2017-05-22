@@ -44,6 +44,13 @@ public class Test10 {
 	}
 	
 	
+	/**
+	 * m个学生围城一圈,从第0个学生开始报数,报数能被n整除的学生将退出圈,循环多次之后最后会剩下那个学生
+	 * 1.先遍历一次圈,遍历完成之后再把能被3整除的学生T出圈
+	 * 2.然后循环遍历上一步剩下的圈,直到圈的大小为1
+	 * @param m   学生人数
+	 * @param n   被除数
+	 */
 	public static void test1(int m,int n){	
 		//数据准备
 		List<Integer> list=new ArrayList<>(m);
