@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: quartz-learn1                                              # app名称
+  datasource:                                                        # 配置dataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url : jdbc:mysql://localhost:3306/test?useSSL=false
+    username: root
+    password: root
+    #schema:
+    #- classpath:schema.sql                                           # 建表脚本
+    #data:                          
+    #- classpath:data.sql                                             # 数据脚本
+server:                                                              # 端口号
+  port: 8080
+  
