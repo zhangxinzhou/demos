@@ -37,7 +37,8 @@ public class Test11 {
 				Map<String, String> map=getMaps().get(object.getClass().getName());
 				for (Field field : fields) {
 					String fieldName=field.getName(); //属性值
-					String tableHeadName=map.get(fieldName); //数据库中的字段整成用户能看懂的字段
+					String tableHeadName;
+					tableHeadName=map!=null?map.getOrDefault(fieldName, fieldName):fieldName; //数据库中的字段整成用户能看懂的字段
 					fieldNames.add(fieldName);					
 					System.out.print(tableHeadName+"\t");
 				}
