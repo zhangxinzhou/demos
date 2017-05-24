@@ -6,11 +6,11 @@ import java.util.List;
 
 /**
  * list元素数量和list容量的关系
- * 当元素数量>list容量的时候将会扩容,新的容量就旧容量的1.5倍new=old+(old>>1);
+ * 当元素数量>list容量的时候将会扩容,新的容量就旧容量的1.5倍new=old+(old>>1)(jdk1.8);
  * @author Administrator
  *
  */
-public class Test13 {
+public class Test13_listsizeandcapacity {
 
 	
 	public static void main(String[] args) throws Exception {
@@ -31,7 +31,7 @@ public class Test13 {
 			list.add("a");
 			int size=list.size();
 			int capacity=((Object[]) elementData.get(list)).length;
-			int nextcapacity=capacity+(capacity>>1);//源码扩容方式
+			int nextcapacity=capacity+(capacity>>1);//源码扩容方式(jdk1.8);
 			if(flag){flag=false;count++;}
 			if(size==capacity){flag=true;}//下一次将会扩容		
 			System.out.println(size+"\t"+capacity+"\t"+count+"\t"+nextcapacity+"\t");

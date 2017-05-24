@@ -3,7 +3,7 @@ package com.mytest.test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test10 {
+public class Test10_100studentwith3 {
 
 	private static ThreadLocal<Long> count=new ThreadLocal<>();
 	

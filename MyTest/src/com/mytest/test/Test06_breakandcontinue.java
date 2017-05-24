@@ -3,7 +3,7 @@ package com.mytest.test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test06 {
+public class Test06_breakandcontinue {
 
 	public static void main(String[] args) {
 		List<Student> stus=new ArrayList<>();

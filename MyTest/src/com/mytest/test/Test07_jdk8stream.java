@@ -2,7 +2,7 @@ package com.mytest.test;
 
 import java.util.stream.Stream;
 
-public class Test07 {
+public class Test07_jdk8stream {
 
 	
 	public static void main(String[] args) {

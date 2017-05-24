@@ -7,7 +7,7 @@ import java.util.Properties;
  * @author ZXZ
  *
  */
-public class Test01 {
+public class Test01_systemproperties {
 
 	
 	public static void main(String[] args) {

@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-public class Test08 {
+public class Test08_bufferedreadercode {
 
 	
 	public static void main(String[] args) throws Exception {

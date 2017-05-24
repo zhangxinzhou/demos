@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Test11 {
+public class Test11_reflectforlistT {
 
 	
 	public static void main(String[] args) throws Exception {

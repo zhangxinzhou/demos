@@ -11,7 +11,7 @@ import java.util.Set;
  * @author ZXZ
  *
  */
-public class Test02 {
+public class Test02_objectslearn {
 
 	/**
 	 * 测试

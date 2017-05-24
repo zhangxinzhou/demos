@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  * @author Administrator
  *
  */
-public class Test12 {
+public class Test12_trywithresource {
 
 	public static void main(String[] args) {
 

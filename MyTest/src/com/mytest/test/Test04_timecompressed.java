@@ -8,13 +8,13 @@ import java.util.Date;
  * @see 时间格式的转换和压缩
  *
  */
-public class Test04 {
+public class Test04_timecompressed {
 
 	private static final SimpleDateFormat SDF_SWIFT_NUMBER=new SimpleDateFormat("yyyyMMddHHmmssSSS");
 	private static final SimpleDateFormat SDF_DATE_TIME=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 	
 	public static void main(String[] args){
-		new Test04().test();
+		new Test04_timecompressed().test();
 	}
 
 
