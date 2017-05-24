@@ -8,7 +8,7 @@ public class Test10 {
 	private static ThreadLocal<Long> count=new ThreadLocal<>();
 	
 	public static void main(String[] args) {
-		int m=100;
+		int m=1000;
 		int n=3;
 		test(m,n);
 		test1(m,n);

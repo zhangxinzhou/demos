@@ -4,13 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * try-catch-finally与try-with-resource比较
+ * @author Administrator
+ *
+ */
 public class Test12 {
 
 	public static void main(String[] args) {
 
-		
-
+	
 		String path="C:\\windows-version.txt";
 		oldMethod(path);
 		newMethod(path);
@@ -48,7 +51,8 @@ public class Test12 {
 		try(
 				InputStreamReader isr = new InputStreamReader(new FileInputStream(path), "gbk");
 				BufferedReader br = new BufferedReader(isr);
-				) {
+				) 
+		{
 			System.out.println(br.readLine());
 		} catch (Exception e) {
 			e.printStackTrace();
