@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyeme.leaf">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<table>
+    <thead>
+       <td>序号</td>
+       <td>文件名</td>
+       <td>操作</td>
+    </thead>
+    <tfoot>
+       <td>序号</td>
+       <td>文件名</td>
+       <td>操作</td>
+    </tfoot>
+    <tbody th:each="d,iterStat : ${data}">
+       <td th:text="${iterStat.count}">序号</td>
+       <td th:text="${d}">文件名</td>
+       <td><a th:href="'/download?filename='+${d}" th:text="@{下载}"></a></td>
+    </tbody>
+</table>
+
+</body>
+</html>
