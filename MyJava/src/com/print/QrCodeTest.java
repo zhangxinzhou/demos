@@ -15,7 +15,7 @@ public class QrCodeTest extends JFrame{
 	private String msg;
 	
 	public QrCodeTest(String msg){
-		this.setSize(420,350); 
+		this.setSize(800,800); 
         this.setVisible(true); 
         this.msg = msg; 
 	}
@@ -24,12 +24,12 @@ public class QrCodeTest extends JFrame{
 	public void paint(Graphics g) {
 		super.paint(g);
 		Image image=CodeUtil.getQRcodeWithLogo(msg, 300, "C:\\Users\\Administrator\\Desktop\\20435855.jpg", 10);
-		g.drawImage(image, 10, 110, this);
+		g.drawImage(image, 50, 150, this);
 	}
 
 
 
 	public static void main(String[] args) {
-		new QrCodeTest("123");
+		new QrCodeTest("12lfjlskdjflksdjflkjkslkfjdlksdjlkfjlsa;kdjflksjdlfjslkdjfkjsd'lkfjlkjadfjlakjdlfkjalkdjfkjdlksjflkjdklsjf3");
 	}
 }
