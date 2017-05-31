@@ -2,6 +2,8 @@ package com.mytest.redis;
 
 
 
+
+
 import redis.clients.jedis.Jedis;
 
 public class Test04_Lists {
@@ -9,7 +11,9 @@ public class Test04_Lists {
 	private static Jedis jedis=new Jedis("localhost");
 	
 	public static void main(String[] args) throws Exception {
-		test();
+		//test();
+		test1();
+		test2();
 	}
 	
 	public static void test(){
@@ -23,5 +27,15 @@ public class Test04_Lists {
 	} 
 	
 
+	public static void test1(){
+		jedis.publish("lalala", "你好啊");
+		
+	}
+	
+	public static void test2(){
+		MyListener listen =new MyListener();
+		jedis.subscribe(listen, "lalala");
+	}
+	
 	
 }
