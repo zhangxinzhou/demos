@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mydemo       # application名称   
+  profiles:
+    active: dev        # 此处选择使用那个配置文件(最好只选择一个)
+---                    # 分隔符,将配置文件分成多段
+# 开发配置
+spring:
+  profiles: dev        # 定义为开发环境配置
+server:
+  port: 18080          # 开发配置端口号为18080
+---
+# 测试环境
+spring:
+  profiles: test       # 定义为测试环境配置
+server:
+  port: 38080
+---
+# 生产配置
+spring:
+  profiles: prod       # 定义为开发环境配置
+server:
+  port: 28080
+
+
