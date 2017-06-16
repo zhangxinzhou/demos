@@ -1,5 +1,6 @@
 package com.mytest.test;
 
+import java.util.Arrays;
 
 /**
  * 冒泡
@@ -13,7 +14,8 @@ public class Test18_BubbleSort {
 	
 		int [] arr={1000,55,12,0,1,1,1,23,-1,-20,555};
 		//test1(arr);
-		test2(arr);
+		//test2(arr);
+		test3(arr);
 	}
 	
 
@@ -53,7 +55,16 @@ public class Test18_BubbleSort {
 				printResult(arr);
 			}
 		}
-	}	
+	}
+	
+	/**
+	 * 其实根本没必要自己写
+	 * @param arr
+	 */
+	public static void test3(int[] arr){
+		Arrays.sort(arr);//默认升序
+		printResult(arr);
+	}
 	
 	private static void printResult(int[] arr){
 		for (int i : arr) {
