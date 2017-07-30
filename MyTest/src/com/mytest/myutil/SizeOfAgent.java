@@ -11,7 +11,8 @@ import java.util.Stack;
 /**
  * 来源: http://www.jroller.com/maxim/entry/again_about_determining_size_of
  * 另一个参考: http://www.cnblogs.com/niurougan/p/4196048.html
- * 此类无法直接使用
+ * 此类无法直接使用,暂时无法跑通,以后再说
+ * TODO 以后有空在处理
  */
 /** Instrumentation agent used */
 public class SizeOfAgent {
