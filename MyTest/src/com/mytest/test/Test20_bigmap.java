@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Test20 {
+public class Test20_bigmap {
 
 	
 	private static final int MAP_SIZE=500;
