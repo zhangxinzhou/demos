@@ -24,4 +24,5 @@ public class TestController {
 	public List<Map<String, Object>> data1(){		
 		return testService.data1();
 	}
+	
 }
