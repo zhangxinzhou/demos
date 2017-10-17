@@ -1,7 +1,0 @@
-server:
-  port: 8080
-spring:
-  application:
-    name: echarts_learn
-  thymeleaf:
-    cache: false
