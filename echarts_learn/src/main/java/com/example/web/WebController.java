@@ -15,4 +15,14 @@ public class WebController {
 	public String demo1(){
 		return "demo1";
 	}
+	
+	@RequestMapping("/demo2")
+	public String demo2(){
+		return "demo2";
+	}
+	
+	@RequestMapping("/demo3")
+	public String demo3(){
+		return "demo3";
+	}
 }
