@@ -73,7 +73,7 @@
 					normal : {
 						lineStyle : {
 							type : 'solid',
-							color : '#000'
+							color : 'green'
 						},
 						label : {
 							show : true,
@@ -91,18 +91,10 @@
 					shadowColor : null,
 					shadowBlur : null
 				},
-				data : [ [ {
-					name : '标线1起点',
-					value : 400,
-					xAxis : -1,
-					yAxis : 400
-				}, // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
-				{
-					name : '标线1终点',
-					xAxis : '周日',
-					yAxis : 400
-				}, // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配
-				], ]
+				data : [
+					[ {name : '标线1起点',xAxis : '周二',yAxis : 0}, {name : '标线1终点',xAxis : '周二',yAxis : 1500},],
+					[ {name : '标线2起点',xAxis : '周三',yAxis : 0}, {name : '标线2终点',xAxis : '周三',yAxis : 1500},] 
+					]
 			}
 
 		}, {
