@@ -5,17 +5,136 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="div1" style="width: 600px; height: 400px;"></div>
-<div id="div2"></div>
-<button onclick="demo1()">click me</button>
+<div id="div1" style="width: 1200px; height: 600px;"></div>
 
 <script th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/echarts-2.2.7/build/dist/echarts-all.js}"></script>
 <script th:inline="javascript" type="text/javascript" >
 /*<![CDATA[*/		
 
-//初始化echarts
-/*]]>*/
+	var myChart = echarts.init(document.getElementById('div1'));
+
+	option = {
+		title : {
+			text : '某楼盘销售情况',
+			subtext : '纯属虚构'
+		},
+		tooltip : {
+			trigger : 'axis'
+		},
+		legend : {
+			data : [ '意向', '预购', '成交' ]
+		},
+		toolbox : {
+			show : true,
+			feature : {
+				mark : {
+					show : true
+				},
+				dataView : {
+					show : true,
+					readOnly : false
+				},
+				magicType : {
+					show : true,
+					type : [ 'line', 'bar', 'stack', 'tiled' ]
+				},
+				restore : {
+					show : true
+				},
+				saveAsImage : {
+					show : true
+				}
+			}
+		},
+		calculable : true,
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			data : [ '周一', '周二', '周三', '周四', '周五', '周六', '周日' ]
+		} ],
+		yAxis : [ {
+			type : 'value'
+		} ],
+		series : [ {
+			name : '成交',
+			type : 'line',
+			smooth : true,
+			itemStyle : {
+				normal : {
+					areaStyle : {
+						type : 'default'
+					}
+				}
+			},
+			data : [ 10, 12, 21, 54, 260, 830, 710 ],
+			markLine : {
+				itemStyle : {
+					normal : {
+						lineStyle : {
+							type : 'solid',
+							color : '#000'
+						},
+						label : {
+							show : true,
+							position : 'left'
+						}
+					}
+				},
+				large : true,
+				effect : {
+					show : false,
+					loop : true,
+					period : 0,
+					scaleSize : 2,
+					color : null,
+					shadowColor : null,
+					shadowBlur : null
+				},
+				data : [ [ {
+					name : '标线1起点',
+					value : 400,
+					xAxis : -1,
+					yAxis : 400
+				}, // 当xAxis为类目轴时，数值1会被理解为类目轴的index，通过xAxis:-1|MAXNUMBER可以让线到达grid边缘
+				{
+					name : '标线1终点',
+					xAxis : '周日',
+					yAxis : 400
+				}, // 当xAxis为类目轴时，字符串'周三'会被理解为与类目轴的文本进行匹配
+				], ]
+			}
+
+		}, {
+			name : '预购',
+			type : 'line',
+			smooth : true,
+			itemStyle : {
+				normal : {
+					areaStyle : {
+						type : 'default'
+					}
+				}
+			},
+			data : [ 30, 182, 434, 791, 390, 30, 10 ]
+		}, {
+			name : '意向',
+			type : 'line',
+			smooth : true,
+			itemStyle : {
+				normal : {
+					areaStyle : {
+						type : 'default'
+					}
+				}
+			},
+			data : [ 1320, 1132, 601, 234, 120, 90, 20 ]
+		} ]
+	};
+
+	myChart.setOption(option);
+
+	/*]]>*/
 </script>
 </body>
 </html>
