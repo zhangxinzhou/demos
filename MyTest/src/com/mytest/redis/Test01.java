@@ -9,7 +9,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * http://www.cnblogs.com/markhe/p/5689356.html
- * @author Administrator
+ * @author zxz
  *
  */
 public class Test01 {
