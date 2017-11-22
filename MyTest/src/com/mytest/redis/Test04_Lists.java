@@ -34,8 +34,7 @@ public class Test04_Lists {
 	
 	public static void test2(){
 		MyListener listen =new MyListener();
-		jedis.subscribe(listen, "lalala");
-	}
+		jedis.subscribe(listen, "lalala");	}
 	
 	
 }
