@@ -1,5 +1,0 @@
-spring:
-  thymeleaf:
-    cache: false
-    # 不严格的html格式,防止标签不闭合报错,注意需要maven引入net.sourceforge.nekohtml  
-    mode: LEGACYHTML5
